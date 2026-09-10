@@ -145,4 +145,56 @@ main:has(#enquire-form):not(:has(#enquire))::before{
 @media(min-width:768px){
   main:has(#enquire-form):not(:has(#enquire))::before{top:6.5rem}
 }
+</style><style id="sbc-polish-style">
+/* Shantiban City - polish layer.
+   CSS only: no markup, no palette changes. Every value below is an existing
+   brand token (green-950 #0a1a12, green-700 #1f4e33, gold-600 #a9822f,
+   gold-300 #e4d6ac, paper-deep #ececec). */
+
+/* 1. In-page jumps. The header is fixed and 90px tall, so every nav anchor
+      (Overview, Amenities, Master Plan, FAQ) parked its section heading
+      underneath it. The site scrolls with scrollIntoView, which honours this. */
+[id]{scroll-margin-top:6.5rem}
+@media(min-width:768px){[id]{scroll-margin-top:7rem}}
+
+/* 2. Keyboard focus. The build ships focus:outline-none on all 57 controls,
+      so keyboard users had no visible focus anywhere. :focus-visible leaves
+      mouse and touch interaction looking exactly as it does today. */
+a:focus-visible,button:focus-visible,[role="button"]:focus-visible,
+input:focus-visible,select:focus-visible,textarea:focus-visible,
+summary:focus-visible,[tabindex]:focus-visible{
+  /* no border-radius here: the outline already follows each element's own
+     radius, and setting one would reshape controls on focus. */
+  outline:2px solid #a9822f;outline-offset:3px;
+}
+/* gold needs to lift off the dark ground in the footer */
+footer a:focus-visible,footer button:focus-visible{outline-color:#e4d6ac}
+
+/* 3. Selection: the brand in miniature, seen only when someone engages
+      with the copy. */
+::selection{background:#0a1a12;color:#e4d6ac}
+
+/* 4. Hairline scrollbar in brand green. Pointer devices only, so touch
+      keeps its native overlay bar. */
+@media(hover:hover) and (pointer:fine){
+  html{scrollbar-width:thin;scrollbar-color:#1f4e33 #ececec}
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-track{background:#ececec}
+  ::-webkit-scrollbar-thumb{background:#1f4e33;border:3px solid #ececec;border-radius:9999px}
+  ::-webkit-scrollbar-thumb:hover{background:#0a1a12}
+}
+
+/* 5. Body copy: no single-word last lines. Affects only the final line,
+      so existing line breaks stay put. */
+p,li,figcaption,blockquote{text-wrap:pretty}
+a[href^="tel:"],time{font-variant-numeric:tabular-nums}
+
+/* 6. Reduced motion, for the CSS layer. */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important;scroll-behavior:auto!important;
+  }
+}
 </style></body></html>
