@@ -127,4 +127,22 @@
   if(document.readyState==='complete')boot();
   else window.addEventListener('load',boot);
 })();
-</script></body></html>
+</script><style id="sbc-contactbg-style">
+/* Contact page: photographic backdrop behind the whole enquiry section,
+   matching how section#enquire carries this image on the home page.
+   Scoped to the contact page's <main> - it holds #enquire-form but has no
+   #enquire section, which is what distinguishes it from the home page.
+   No stacking context is created here (no isolation/z-index on <main>), so
+   overlay modals rendered inside <main> can still layer above the header. */
+main:has(#enquire-form):not(:has(#enquire)){position:relative}
+main:has(#enquire-form):not(:has(#enquire))::before{
+  content:"";position:absolute;left:0;right:0;top:6rem;bottom:0;
+  z-index:-1;pointer-events:none;
+  background-image:url("/images/contact-bg.png");
+  background-size:cover;background-position:center;
+  opacity:.24;
+}
+@media(min-width:768px){
+  main:has(#enquire-form):not(:has(#enquire))::before{top:6.5rem}
+}
+</style></body></html>
