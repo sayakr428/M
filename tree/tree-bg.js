@@ -77,13 +77,76 @@
     var seed = 7; function rnd(){ seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
     var blossoms = ANCH.pts.map(function(q){ return { x: q[0], y: q[1], rot: rnd() * 6.28, s: 0.8 + rnd() * 0.45, t: 0.70 + (1 - q[2]) * 0.14 + rnd() * 0.06, tone: rnd() }; });
 
+    /* Readability: rather than fading the tree, any piece of copy the grown
+       tree actually sits behind gets the class "sbc-on-tree", which the page
+       CSS uses to lift the text (deeper ink + a soft white glow). Coverage is
+       read from small CPU copies of the cutout alpha and the growth map, so
+       it follows the tree as it grows and as you scroll. */
+    var items = [], wrapA = 0, wrapB = 0, lastSy = -1, recollectT = 0, cov = null, lastGrow = -1;
+    function opaqueBehind(el, stop){
+      for (var e = el; e && e !== stop; e = e.parentElement){
+        var bg = getComputedStyle(e).backgroundColor, m = bg.match(/rgba?\(([^)]+)\)/);
+        if (m){ var v = m[1].split(','); if (v.length < 4 || parseFloat(v[3]) > 0.6) return true; }
+        if (getComputedStyle(e).backgroundImage !== 'none') return true;
+      }
+      return false;
+    }
+    function collectText(){
+      var sx = window.scrollX || 0, sy = window.scrollY || 0, rg = document.createRange(), byEl = new Map();
+      var roots = document.querySelectorAll('main section:not(#top):not(#enquire), #top + div');
+      for (var r = 0; r < roots.length; r++){
+        var tw = document.createTreeWalker(roots[r], NodeFilter.SHOW_TEXT, null), n;
+        while ((n = tw.nextNode())){
+          if (!n.nodeValue.trim()) continue;
+          var el = n.parentElement; if (!el) continue;
+          /* moving marquee captions have their own glass band (CSS) */
+          if (el.closest('[class*="animate-marquee"]')) continue;
+          var it = byEl.get(el);
+          if (it === undefined){ it = opaqueBehind(el, roots[r]) ? null : { el: el, rects: [], on: el.classList.contains('sbc-on-tree') }; byEl.set(el, it); }
+          if (!it) continue;
+          rg.selectNodeContents(n);
+          var ls = rg.getClientRects();
+          for (var k = 0; k < ls.length; k++){ var bb = ls[k]; if (bb.width >= 1 && bb.height >= 1) it.rects.push([bb.left + sx, bb.top + sy, bb.width, bb.height]); }
+        }
+      }
+      var out = [];
+      byEl.forEach(function(it){ if (it && it.rects.length) out.push(it); });
+      items.forEach(function(o){ if (o.on && out.indexOf(o) < 0 && !byEl.get(o.el)) o.el.classList.remove('sbc-on-tree'); });
+      items = out; lastSy = -1; lastGrow = -1;
+    }
+    function buildCoverage(img, dimg){
+      var cw = Math.round(ANCH.w / 4), ch = Math.round(ANCH.h / 4);
+      function px(im){ var c = document.createElement('canvas'); c.width = cw; c.height = ch; var g = c.getContext('2d', { willReadFrequently: true }); g.drawImage(im, 0, 0, cw, ch); return g.getImageData(0, 0, cw, ch).data; }
+      try { cov = { w: cw, h: ch, a: px(img), d: px(dimg) }; } catch (e) { cov = null; }
+    }
+    function covered(x, y, R, grow){
+      var u = (x - R.x) / R.w, v = (y - R.y) / R.h;
+      if (u < 0 || u >= 1 || v < 0 || v >= 1) return false;
+      var i = ((Math.floor((1 - v) * cov.h) * cov.w) + Math.floor(u * cov.w)) * 4;
+      return cov.a[i + 3] > 90 && (cov.d[i] / 255 + (cov.d[i + 2] / 255) * 0.10) < grow;
+    }
+    function updateContrast(sy, grow){
+      if (!cov) return;
+      var stickTop = Math.min(Math.max(sy, wrapA), wrapB - H), R = drawRect;
+      for (var i = 0; i < items.length; i++){
+        var it = items[i], on = false;
+        for (var k = 0; k < it.rects.length && !on; k++){
+          var t = it.rects[k], y0 = t[1] - stickTop;
+          if (y0 + t[3] < 0 || y0 > H) continue;
+          for (var sxi = 0; sxi < 6 && !on; sxi++) for (var syi = 0; syi < 2 && !on; syi++)
+            on = covered(t[0] + t[2] * (sxi + 0.5) / 6, y0 + t[3] * (syi + 0.5) / 2, R, grow);
+        }
+        if (on !== it.on){ it.on = on; it.el.classList.toggle('sbc-on-tree', on); }
+      }
+    }
     function measure(){
       start = document.getElementById('top') || start; end = document.getElementById('faq') || end;
       var sy = window.scrollY || window.pageYOffset;
       var a = start.getBoundingClientRect().bottom + sy;
       var b = end.getBoundingClientRect().bottom + sy;
       wrap.style.top = a + 'px'; wrap.style.height = Math.max(0, b - a) + 'px';
-      top0 = a - window.innerHeight; span = Math.max(1, b - a);
+      top0 = a - window.innerHeight; span = Math.max(1, b - a); wrapA = a; wrapB = b;
+      collectText();
     }
 
     function layout(){
@@ -175,7 +238,10 @@
         bx.setTransform(1, 0, 0, 1, 0, 0); bx.clearRect(0, 0, bc.width, bc.height);
         for (var i = 0; i < blossoms.length; i++) drawBlossom(blossoms[i], p, S, drawRect);
       }
-      if (!changed && (reduce || (!pollen.length && !petals.length))) return;
+      var moved = sy !== lastSy; lastSy = sy;
+      var grow = clamp((p - 0.04) / 0.58) * 1.03;
+      if (moved || Math.abs(grow - lastGrow) > 0.004){ lastGrow = grow; updateContrast(sy, grow); }
+      if (!changed && !moved && (reduce || (!pollen.length && !petals.length))) return;
       c2.setTransform(1, 0, 0, 1, 0, 0); c2.clearRect(0, 0, fx.width, fx.height); c2.drawImage(bc, 0, 0);
       c2.setTransform(DPR, 0, 0, DPR, 0, 0);
       if (reduce) return;
@@ -202,6 +268,10 @@
     var lw = 0, lh = 0;
     function onResize(){ measure(); if (window.innerWidth !== lw || Math.abs(window.innerHeight - lh) > 140){ lw = window.innerWidth; lh = window.innerHeight; layout(); } }
     window.addEventListener('resize', onResize);
+    /* Content fades/slides in and accordions open as you scroll: refresh the
+       cached text positions shortly after scrolling settles. */
+    window.addEventListener('scroll', function(){ clearTimeout(recollectT); recollectT = setTimeout(collectText, 180); }, { passive: true });
+    document.addEventListener('click', function(){ setTimeout(collectText, 450); }, true);
     if ('ResizeObserver' in window) new ResizeObserver(measure).observe(document.documentElement);
     /* React can re-render the page after load (e.g. hydration recovery) and
        drop nodes it doesn't own; put the layer back if that happens. */
@@ -210,6 +280,7 @@
 
     Promise.all([load(BASE + 'tree-cutout.webp'), load(BASE + 'tree-growth-map.png')]).then(function(im){
       imgs = im;
+      buildCoverage(im[0], im[1]);
       var ok = false; try { ok = initGL(im[0], im[1]); } catch (e) { ok = false; }
       /* Phones can drop the WebGL context (app switch, memory pressure). */
       cv.addEventListener('webglcontextlost', function(e){ e.preventDefault(); gl = null; });
