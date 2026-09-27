@@ -1,0 +1,53 @@
+/* Shantiban City - shared enhancement styles (loaded on every page, so they
+   still apply after the app switches pages without a reload). */
+
+/* Scroll-grown tree behind the home page, from under the top banner to the end of #faq.
+   The layer sits at z-index:-1 on the white page ground, so the sections in
+   that range drop their own solid white so it can show through. */
+#sbc-tree{position:absolute;left:0;right:0;z-index:-1;pointer-events:none;opacity:var(--sbc-tree-opacity,.8)}
+@media(max-width:767px){#sbc-tree{opacity:var(--sbc-tree-opacity-mobile,.55)}}
+.sbc-tree-stick{position:sticky;top:0;width:100%;height:100vh;height:100lvh;overflow:hidden}
+.sbc-tree-stick canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.sbc-tree-fallback{position:absolute;max-width:none}
+html:has(#sbc-tree) main section.bg-paper:not(#top):not(#enquire){background-color:transparent}
+html:has(#sbc-tree) main #top + div.bg-paper{background-color:transparent}
+html:has(#sbc-tree) main section.bg-paper-alt{background-color:rgba(244,244,244,.55)}
+
+/* "Thirteen reasons" marquee: a frosted-glass band runs the full width of
+   each row behind the captions (title + line), so they stay readable over
+   the tree while the row scrolls. Top = row padding + round photo + gap. */
+html:has(#sbc-tree) div.overflow-hidden.py-2:has(> [class*="animate-marquee"]){position:relative;isolation:isolate}
+html:has(#sbc-tree) div.overflow-hidden.py-2:has(> [class*="animate-marquee"])::before{
+  content:"";position:absolute;left:0;right:0;z-index:-1;pointer-events:none;
+  top:calc(.5rem + 10rem + .45rem);bottom:0;
+  background:linear-gradient(180deg,rgba(255,255,255,.72),rgba(255,255,255,.58));
+  -webkit-backdrop-filter:blur(14px) saturate(1.25);backdrop-filter:blur(14px) saturate(1.25);
+  border-top:1px solid rgba(255,255,255,.9);border-bottom:1px solid rgba(15,26,18,.06);
+  box-shadow:0 10px 30px -18px rgba(15,26,18,.25),inset 0 1px 0 rgba(255,255,255,.6);
+}
+@media(min-width:768px){
+  html:has(#sbc-tree) div.overflow-hidden.py-2:has(> [class*="animate-marquee"])::before{top:calc(.5rem + 13rem + .45rem)}
+}
+
+/* Copy that the grown tree sits behind (the script toggles .sbc-on-tree):
+   near-black ink with a crisp white outline and glow, so it reads clearly
+   on bark, moss and blossoms. No size/weight change, so nothing shifts. */
+.sbc-on-tree{
+  color:#050e08!important;
+  -webkit-text-stroke:3px rgba(255,255,255,.92);paint-order:stroke fill;
+  text-shadow:0 0 1px #fff,0 0 2px #fff,0 0 4px #fff,0 0 8px rgba(255,255,255,.95),0 0 16px rgba(255,255,255,.8);
+  transition:color .3s ease,text-shadow .3s ease;
+}
+
+/* Thin gold frame (with a translucent white gap) around the page videos on
+   the home and About pages - not the intro mascot overlay. */
+div.rounded-2xl:has(> video[src*="Untitled_design"]),div.rounded-2xl:has(> video[src*="Untitled_Scene_09-20_13_22_43_20260920205922"]){
+  outline:1.5px solid #a9822f;outline-offset:4px;
+  box-shadow:0 0 0 4px rgba(255,255,255,.78),0 25px 50px -12px rgba(0,0,0,.25);
+}
+@media(max-width:767px){div.rounded-2xl:has(> video[src*="Untitled_design"]),div.rounded-2xl:has(> video[src*="Untitled_Scene_09-20_13_22_43_20260920205922"]){outline-offset:3px;box-shadow:0 0 0 3px rgba(255,255,255,.78),0 25px 50px -12px rgba(0,0,0,.25)}}
+
+/* About page video: same frame and player as the home page (#amenities). */
+div.rounded-2xl:has(> video[src*="Untitled_Scene_09-20_13_22_43_20260920205922"]){aspect-ratio:16/9!important;background:#000;border:0!important}
+div.rounded-2xl:has(> video[src*="Untitled_Scene_09-20_13_22_43_20260920205922"]) > video{cursor:pointer}
+.sbc-ap-hide{opacity:0!important;pointer-events:none!important}
