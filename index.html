@@ -197,4 +197,16 @@ a[href^="tel:"],time{font-variant-numeric:tabular-nums}
     transition-duration:.01ms!important;scroll-behavior:auto!important;
   }
 }
-</style></body></html>
+</style><style id="sbc-tree-style">
+/* Scroll-grown tree behind the home page, from under the top banner to the end of #faq.
+   The layer sits at z-index:-1 on the white page ground, so the sections in
+   that range drop their own solid white so it can show through. */
+#sbc-tree{position:absolute;left:0;right:0;z-index:-1;pointer-events:none;opacity:var(--sbc-tree-opacity,.65)}
+@media(max-width:767px){#sbc-tree{opacity:var(--sbc-tree-opacity-mobile,.55)}}
+.sbc-tree-stick{position:sticky;top:0;width:100%;height:100vh;height:100lvh;overflow:hidden}
+.sbc-tree-stick canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.sbc-tree-fallback{position:absolute;max-width:none}
+html:has(#sbc-tree) main section.bg-paper:not(#top):not(#enquire){background-color:transparent}
+html:has(#sbc-tree) main #top + div.bg-paper{background-color:transparent}
+html:has(#sbc-tree) main section.bg-paper-alt{background-color:rgba(244,244,244,.55)}
+</style><script id="sbc-tree-script" src="/tree/tree-bg.js" defer></script></body></html>
