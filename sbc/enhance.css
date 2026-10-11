@@ -168,6 +168,8 @@ html.sbc-menu-open .sbc-menu-foot{opacity:1;transform:none;transition:opacity .6
 .sbc-menu-cta:hover svg{transform:translateX(4px)}
 .sbc-menu-tel{color:rgba(255,255,255,.75);text-decoration:none;font-size:1rem;letter-spacing:.04em;transition:color .3s}
 .sbc-menu-tel:hover{color:var(--color-gold-300,#e4d6ac)}
+.sbc-menu-contact{display:flex;flex-direction:column;gap:.35rem;min-width:0}
+.sbc-menu-contact .sbc-menu-tel{overflow-wrap:anywhere}
 /* Large screens: links on the left, a photo panel on the right that is
    unveiled bottom-up just after the circle has filled the screen. */
 .sbc-menu-media{display:none;margin:0}
@@ -210,3 +212,38 @@ html.sbc-menu-open .sbc-menu-foot{opacity:1;transform:none;transition:opacity .6
   html.sbc-menu-open #sbc-menu{opacity:1}
   .sbc-menu-links a,.sbc-menu-foot,.sbc-menu-eyebrow{transform:none!important;transition-duration:.2s!important;transition-delay:0s!important}
 }
+
+/* About page: Certificate of Incorporation card (added by certificate.js) */
+.sbc-coi{display:flex;flex-direction:column;align-items:center;gap:1.5rem;width:100%;margin-top:.5rem;padding:1.25rem;text-align:left;
+  background:#fff;border:1px solid rgba(10,26,18,.1);border-radius:1.25rem;box-shadow:0 18px 40px -24px rgba(10,26,18,.35)}
+@media(min-width:768px){.sbc-coi{flex-direction:row;align-items:stretch;gap:2rem;padding:1.75rem}}
+.sbc-coi-thumb{position:relative;flex:none;width:min(15rem,100%);padding:0;border:1px solid rgba(10,26,18,.12);border-radius:.75rem;overflow:hidden;
+  background:#fff;cursor:zoom-in;box-shadow:0 8px 20px -12px rgba(10,26,18,.4);transition:transform .25s ease,box-shadow .25s ease}
+.sbc-coi-thumb:hover{transform:translateY(-3px) rotate(-.5deg);box-shadow:0 16px 30px -14px rgba(10,26,18,.45)}
+.sbc-coi-thumb:focus-visible,.sbc-coi-view:focus-visible,.sbc-coi-actions a:focus-visible,.sbc-coi-close:focus-visible{outline:2px solid #c29b45;outline-offset:3px}
+.sbc-coi-thumb img{display:block;width:100%;height:auto}
+.sbc-coi-zoom{position:absolute;right:.6rem;bottom:.6rem;display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;border-radius:999px;
+  background:rgba(10,26,18,.85);color:#d4b56a;opacity:.9;transition:opacity .2s}
+.sbc-coi-thumb:hover .sbc-coi-zoom{opacity:1}
+.sbc-coi-body{display:flex;flex-direction:column;justify-content:center;gap:.75rem;min-width:0}
+.sbc-coi-tag{display:inline-flex;align-items:center;gap:.4rem;align-self:flex-start;padding:.3rem .7rem;border-radius:999px;background:#dde9e0;color:#163b27;
+  font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.sbc-coi-body h3{margin:0;font-size:1.35rem;font-weight:600;line-height:1.2;color:#0a1a12}
+.sbc-coi-body p{margin:0;font-size:.95rem;line-height:1.6;color:#47554c}
+.sbc-coi-body dl{display:grid;gap:.5rem;margin:.25rem 0 0;padding-top:.75rem;border-top:1px solid rgba(10,26,18,.08)}
+.sbc-coi-body dl div{display:grid;grid-template-columns:8.5rem 1fr;gap:.75rem}
+@media(max-width:420px){.sbc-coi-body dl div{grid-template-columns:1fr;gap:.1rem}}
+.sbc-coi-body dt{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#7c8a80;padding-top:.15rem}
+.sbc-coi-body dd{margin:0;font-size:.92rem;font-weight:500;color:#16211a;overflow-wrap:anywhere}
+.sbc-coi-actions{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem 1.25rem;margin-top:.5rem}
+.sbc-coi-view{padding:.65rem 1.2rem;border:0;border-radius:999px;background:#0a1a12;color:#e4d6ac;font-size:.875rem;font-weight:600;cursor:pointer;transition:background .2s}
+.sbc-coi-view:hover{background:#163b27}
+.sbc-coi-actions a{font-size:.875rem;font-weight:600;color:#163b27;text-decoration:underline;text-decoration-color:rgba(22,59,39,.3);text-underline-offset:4px}
+.sbc-coi-actions a:hover{color:#0a1a12;text-decoration-color:#0a1a12}
+.sbc-coi-lb{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:3.5rem 1rem 1rem;
+  background:rgba(5,14,8,.88);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);animation:sbc-coi-in .2s ease}
+.sbc-coi-lb img{max-width:min(100%,52rem);max-height:100%;width:auto;height:auto;border-radius:.5rem;background:#fff;box-shadow:0 30px 80px -20px rgba(0,0,0,.6)}
+.sbc-coi-close{position:absolute;top:.75rem;right:.75rem;width:2.75rem;height:2.75rem;border:0;border-radius:999px;background:rgba(255,255,255,.12);
+  color:#fff;font-size:1.75rem;line-height:1;cursor:pointer}
+.sbc-coi-close:hover{background:rgba(255,255,255,.22)}
+@keyframes sbc-coi-in{from{opacity:0}to{opacity:1}}

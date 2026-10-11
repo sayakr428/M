@@ -56,7 +56,11 @@
           '<a class="sbc-menu-cta" href="/contact/" data-sbc-cta>Book a Site Visit' +
             '<svg width="16" height="16" fill="currentColor" viewBox="0 0 256 256" aria-hidden="true"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg>' +
           '</a>' +
-          '<a class="sbc-menu-tel" href="tel:+919830050189">+91 98300 50189</a>' +
+          '<div class="sbc-menu-contact">' +
+            '<a class="sbc-menu-tel" href="tel:+919150568165">+91 91505 68165</a>' +
+            '<a class="sbc-menu-tel" href="tel:+918974332863">+91 89743 32863</a>' +
+            '<a class="sbc-menu-tel" href="mailto:connect@mrityikaestates.com">connect@mrityikaestates.com</a>' +
+          '</div>' +
         '</div>' +
       '</div>';
     list = menu.querySelector('.sbc-menu-links');
