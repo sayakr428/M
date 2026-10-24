@@ -41,16 +41,22 @@ html:has(#sbc-tree) div.overflow-hidden.py-2:has(> [class*="animate-marquee"])::
 
 /* Thin gold frame (with a translucent white gap) around the page videos on
    the home and About pages - not the intro mascot overlay. */
-div.rounded-2xl:has(> video[src*="Untitled_design"]),div.rounded-2xl:has(> video[src*="Untitled_Scene_09-20_13_22_43_20260920205922"]){
+div.rounded-2xl:has(> video[src*="Untitled_design"]),div.rounded-2xl:has(> video[src*="Untitled_Scene_09-20_13_22_43_20260920205922"]),div.rounded-2xl[data-sbc-3d]{
   outline:1.5px solid #a9822f;outline-offset:4px;
   box-shadow:0 0 0 4px rgba(255,255,255,.78),0 25px 50px -12px rgba(0,0,0,.25);
 }
-@media(max-width:767px){div.rounded-2xl:has(> video[src*="Untitled_design"]),div.rounded-2xl:has(> video[src*="Untitled_Scene_09-20_13_22_43_20260920205922"]){outline-offset:3px;box-shadow:0 0 0 3px rgba(255,255,255,.78),0 25px 50px -12px rgba(0,0,0,.25)}}
+@media(max-width:767px){div.rounded-2xl:has(> video[src*="Untitled_design"]),div.rounded-2xl:has(> video[src*="Untitled_Scene_09-20_13_22_43_20260920205922"]),div.rounded-2xl[data-sbc-3d]{outline-offset:3px;box-shadow:0 0 0 3px rgba(255,255,255,.78),0 25px 50px -12px rgba(0,0,0,.25)}}
 
-/* About page video: same frame and player as the home page (#amenities). */
-div.rounded-2xl:has(> video[src*="Untitled_Scene_09-20_13_22_43_20260920205922"]){aspect-ratio:16/9!important;background:#000;border:0!important}
-div.rounded-2xl:has(> video[src*="Untitled_Scene_09-20_13_22_43_20260920205922"]) > video{cursor:pointer}
-.sbc-ap-hide{opacity:0!important;pointer-events:none!important}
+/* About page: the 3D walkthrough (about-player.js) in place of the video,
+   in the same gold frame, opening on the walkthrough's entry screen. */
+div.rounded-2xl[data-sbc-3d]{aspect-ratio:16/9!important;background:#0f1a12;border:0!important}
+@media(max-width:767px){div.rounded-2xl[data-sbc-3d]{aspect-ratio:3/5!important}.sbc-3d-tools{display:none!important}}
+div.rounded-2xl[data-sbc-3d]:fullscreen{aspect-ratio:auto!important;border-radius:0}
+.sbc-3d{position:absolute;inset:0}
+.sbc-3d iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+.sbc-3d-tools{position:absolute;left:.75rem;top:50%;transform:translateY(-50%);z-index:2;display:flex;flex-direction:column;gap:.4rem}
+.sbc-3d-tools a,.sbc-3d-tools button{display:flex;align-items:center;justify-content:center;width:2.25rem;height:2.25rem;border-radius:9999px;background:rgba(0,0,0,.6);color:#fff;cursor:pointer;transition:background-color .3s,color .3s}
+.sbc-3d-tools a:hover,.sbc-3d-tools button:hover{background:#e8c766;color:#0f1a12}
 
 /* Header: a longer glass bar, and the menu button shown at every width,
    right after "Book a Site Visit". nav-menu.js opens the full-screen menu. */
