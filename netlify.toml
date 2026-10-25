@@ -1,0 +1,9 @@
+# Static site at repo root + serverless functions that store enquiries in MongoDB Atlas.
+# Set MONGODB_URI and LEADS_PASSWORD in Netlify → Site configuration → Environment variables.
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+  external_node_modules = ["mongodb"]

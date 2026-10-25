@@ -1,0 +1,11 @@
+{
+  "name": "shantiban-city-website",
+  "private": true,
+  "description": "Static site + Netlify functions that store enquiries in MongoDB Atlas",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "mongodb": "^6.10.0"
+  }
+}
