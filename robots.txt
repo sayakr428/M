@@ -1,4 +1,5 @@
 User-Agent: *
 Allow: /
+Disallow: /api/
 
-Sitemap: https://shantibancity.example/sitemap.xml
+Sitemap: https://mrityikaestates.com/sitemap.xml

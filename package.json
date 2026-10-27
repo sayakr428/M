@@ -1,11 +1,15 @@
 {
   "name": "shantiban-city-website",
   "private": true,
-  "description": "Static site + Netlify functions that store enquiries in MongoDB Atlas",
+  "description": "Static site + API (enquiries in MongoDB Atlas, chat, LiveKit voice-agent tokens); server.mjs runs it on Hostinger",
+  "scripts": {
+    "start": "node server.mjs"
+  },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "dependencies": {
+    "livekit-server-sdk": "2.19.1",
     "mongodb": "^6.10.0"
   }
 }
