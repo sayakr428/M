@@ -1,9 +1,12 @@
 # Static site at repo root + serverless functions that store enquiries in MongoDB Atlas.
-# Set MONGODB_URI and LEADS_PASSWORD in Netlify → Site configuration → Environment variables.
+# Set MONGODB_URI, LEADS_PASSWORD, NVIDIA_API_KEY, LIVEKIT_URL, LIVEKIT_API_KEY and
+# LIVEKIT_API_SECRET in Netlify → Site configuration → Environment variables.
 [build]
   publish = "."
   functions = "netlify/functions"
 
 [functions]
   node_bundler = "esbuild"
-  external_node_modules = ["mongodb"]
+  external_node_modules = ["mongodb", "livekit-server-sdk"]
+  # The chat function answers from this document (same one the voice agent uses).
+  included_files = ["netlify/knowledge/**"]
