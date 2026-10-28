@@ -159,6 +159,12 @@ http
     const proto = req.headers["x-forwarded-proto"] || "https";
     const url = new URL(req.url, `${proto}://${host}`);
 
+    // One address for search engines: www.mrityikaestates.com -> mrityikaestates.com
+    if (url.hostname.startsWith("www.")) {
+      res.writeHead(301, { Location: `https://${url.hostname.slice(4)}${req.url}` });
+      return res.end();
+    }
+
     try {
       const api = url.pathname.match(/^\/api\/([a-z-]+)\/?$/);
       if (api) return await handleApi(api[1], req, res, url);
