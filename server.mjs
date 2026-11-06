@@ -21,7 +21,7 @@ const TYPES = {
 };
 
 // Server-side code and config are never served as files.
-const PRIVATE = /^\/(netlify|node_modules|\.git)(\/|$)|^\/(server\.mjs|package(-lock)?\.json|netlify\.toml|\.env.*|\.gitignore|\.gitattributes)$/;
+const PRIVATE = /^\/(netlify|node_modules|tools|\.git)(\/|$)|^\/(server\.mjs|package(-lock)?\.json|netlify\.toml|\.env.*|\.gitignore|\.gitattributes)$/;
 
 const handlers = new Map();
 async function loadHandler(name) {

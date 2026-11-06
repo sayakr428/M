@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 <url>
 <loc>https://mrityikaestates.com/</loc>
 <lastmod>2026-09-08T04:44:30.174Z</lastmod>
@@ -66,4 +66,32 @@
 <changefreq>monthly</changefreq>
 <priority>0.6</priority>
 </url>
+<url>
+<loc>https://mrityikaestates.com/plots-in-baruipur/</loc>
+<lastmod>2026-11-06T00:00:00.000Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+<xhtml:link rel="alternate" hreflang="en-IN" href="https://mrityikaestates.com/plots-in-baruipur/"/>
+<xhtml:link rel="alternate" hreflang="bn-IN" href="https://mrityikaestates.com/bn/plots-in-baruipur/"/>
+<!-- seo-page --></url>
+<url>
+<loc>https://mrityikaestates.com/bn/plots-in-baruipur/</loc>
+<lastmod>2026-11-06T00:00:00.000Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+<xhtml:link rel="alternate" hreflang="bn-IN" href="https://mrityikaestates.com/bn/plots-in-baruipur/"/>
+<xhtml:link rel="alternate" hreflang="en-IN" href="https://mrityikaestates.com/plots-in-baruipur/"/>
+<!-- seo-page --></url>
+<url>
+<loc>https://mrityikaestates.com/plots-near-kolkata/</loc>
+<lastmod>2026-11-06T00:00:00.000Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+<!-- seo-page --></url>
+<url>
+<loc>https://mrityikaestates.com/shantiban-city-fact-sheet/</loc>
+<lastmod>2026-11-06T00:00:00.000Z</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+<!-- seo-page --></url>
 </urlset>
