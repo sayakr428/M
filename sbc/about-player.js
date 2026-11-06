@@ -4,7 +4,7 @@
 (function(){
   /* keep the shared stylesheet in <head> even if the app re-renders <body> */
   (function(){ if (!document.getElementById('sbc-enhance-css')){ var l=document.createElement('link'); l.id='sbc-enhance-css'; l.rel='stylesheet'; l.href='/sbc/enhance.css?v=3d2'; document.head.appendChild(l); } })();
-  var VID="Untitled_Scene_09-20_13_22_43_20260920205922", URL3D='https://shantiban-city-3d.edgeone.cool/';
+  var VID="Untitled_Scene_09-20_13_22_43_20260920205922", URL3D='https://walkthrough.mrityikaestates.com/';
   var ICON_FS='<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256"><path d="M220,48V88a12,12,0,0,1-24,0V60H168a12,12,0,0,1,0-24h40A12,12,0,0,1,220,48ZM88,196H60V168a12,12,0,0,0-24,0v40a12,12,0,0,0,12,12H88a12,12,0,0,0,0-24Zm120-40a12,12,0,0,0-12,12v28H168a12,12,0,0,0,0,24h40a12,12,0,0,0,12-12V168A12,12,0,0,0,208,156ZM88,36H48A12,12,0,0,0,36,48V88a12,12,0,0,0,24,0V60H88a12,12,0,0,0,0-24Z"/></svg>';
   var ICON_OUT='<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256"><path d="M228,104a12,12,0,0,1-24,0V69l-59.51,59.51a12,12,0,0,1-17-17L187,52H152a12,12,0,0,1,0-24h64a12,12,0,0,1,12,12Zm-44,24a12,12,0,0,0-12,12v64H52V84h64a12,12,0,0,0,0-24H48A20,20,0,0,0,28,80V208a20,20,0,0,0,20,20H176a20,20,0,0,0,20-20V140A12,12,0,0,0,184,128Z"/></svg>';
   var TPL=

@@ -359,8 +359,8 @@ function render(p) {
 </head>
 <body>
 <header class="top"><div class="wrap"><a class="brand" href="/"><img src="/images/logo-mark.png" alt="" width="40" height="40"><span>Shantiban <em>City</em><small>Mrityika Realters</small></span></a>
-<nav aria-label="Main"><a href="/plots-in-baruipur/">${p.lang === "bn" ? "বারুইপুরে প্লট" : "Plots in Baruipur"}</a><a href="/plots-near-kolkata/">${p.lang === "bn" ? "ক্রেতার গাইড" : "Buyer's guide"}</a><a href="/shantiban-city-fact-sheet/">${p.lang === "bn" ? "ফ্যাক্ট শিট" : "Fact sheet"}</a>${altUrl ? `<a href="/${p.alt}/" hreflang="${p.lang === "bn" ? "en" : "bn"}">${t.other}</a>` : `<a href="/bn/plots-in-baruipur/" hreflang="bn">বাংলা</a>`}</nav>
-<a class="btn small" href="#enquire">${t.visit}</a></div></header>
+<nav aria-label="Main"><a href="/plots-in-baruipur/">${p.lang === "bn" ? "বারুইপুরে প্লট" : "Plots in Baruipur"}</a><a href="/plots-near-kolkata/">${p.lang === "bn" ? "ক্রেতার গাইড" : "Buyer's guide"}</a><a href="/shantiban-city-fact-sheet/">${p.lang === "bn" ? "ফ্যাক্ট শিট" : "Fact sheet"}</a>${altUrl ? `<a href="/${p.alt}/" hreflang="${p.lang === "bn" ? "en" : "bn"}">${t.other}</a>` : ""}</nav>
+${altUrl ? "" : `<span data-sbc-lang-slot></span>`}<a class="btn small" href="#enquire">${t.visit}</a></div></header>
 <main class="wrap">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="/">${t.home}</a> › <span>${esc(p.crumb)}</span></nav>
 <article>
@@ -375,7 +375,7 @@ ${p.body.map((b) => block(b, t, p.lang)).join("\n")}
 <p>${t.footerNote} ${esc(F.legalName)} · CIN ${F.cin} · GSTIN ${F.gst}</p>
 <p><a href="/">${t.home}</a> · <a href="/about/">${p.lang === "bn" ? "আমাদের কথা" : "About"}</a> · <a href="/contact/">${p.lang === "bn" ? "যোগাযোগ" : "Contact"}</a> · <a href="/plots-in-baruipur/">Plots in Baruipur</a> · <a href="/bn/plots-in-baruipur/">বারুইপুরে প্লট</a> · <a href="/plots-near-kolkata/">Plots near Kolkata</a> · <a href="/shantiban-city-fact-sheet/">Fact sheet</a></p></div></footer>
 <a class="wa-float" href="${WHATSAPP}" rel="noopener" aria-label="${t.wa}">${t.wa}</a>
-<script>
+${altUrl ? "" : `<script src="/sbc/lang.js" defer></script>\n`}<script>
 document.querySelectorAll("form.enq").forEach(function (f) {
   f.addEventListener("submit", function (e) {
     e.preventDefault();
