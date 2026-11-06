@@ -22,7 +22,7 @@ const F = {
   plots: 220,
   plotSize: "2.5 katha",
   commercial: "72,000 sq ft",
-  address: "Tapna, Baruipur–Amtala Road, Dist. South 24 Parganas, West Bengal – 743503",
+  address: "Tapna, Baruipur–Amtala Road, Dist. South 24 Parganas, West Bengal – 700144",
   legalName: "MRITYIKA REALTERS (OPC) PRIVATE LIMITED",
   cin: "U45500WB2019OPC230083",
   gst: "19AAMCM3987F1ZV",
@@ -68,7 +68,7 @@ const PLACE = {
   "@type": ["Place", "Residence"],
   "@id": `${SITE}/#shantiban-city`,
   name: "Shantiban City",
-  address: { "@type": "PostalAddress", streetAddress: "Tapna, Baruipur–Amtala Road", addressLocality: "Baruipur", addressRegion: "West Bengal", postalCode: "743503", addressCountry: "IN" },
+  address: { "@type": "PostalAddress", streetAddress: "Tapna, Baruipur–Amtala Road", addressLocality: "Baruipur", addressRegion: "West Bengal", postalCode: "700144", addressCountry: "IN" },
   geo: GEO,
   hasMap: MAP,
 };
