@@ -9,10 +9,11 @@ import { fileURLToPath } from "node:url";
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SITE = "https://mrityikaestates.com";
 const UPDATED = "2026-11-06";
-const PHONE = "+91 91505 68165";
-const TEL = "+919150568165";
-const WHATSAPP = "https://wa.me/919150568165";
-const MAP = "https://maps.app.goo.gl/TWDqnutqsj7qbSq6A";
+const PHONE = "+91 89743 32863";
+const TEL = "+918974332863";
+const WHATSAPP = "https://wa.me/918974332863";
+const MAP = "https://www.google.com/maps?q=22.365765,88.3377421";
+const GEO = { "@type": "GeoCoordinates", latitude: 22.365765, longitude: 88.3377421 };
 
 // Facts shared by every page. Keep in sync with netlify/knowledge/shantiban-knowledge.md.
 const F = {
@@ -21,7 +22,7 @@ const F = {
   plots: 220,
   plotSize: "2.5 katha",
   commercial: "72,000 sq ft",
-  address: "Tapna, Baruipur, Dist. South 24 Parganas, Kolkata – 700145",
+  address: "Tapna, Baruipur–Amtala Road, Dist. South 24 Parganas, West Bengal – 743503",
   legalName: "MRITYIKA REALTERS (OPC) PRIVATE LIMITED",
   cin: "U45500WB2019OPC230083",
   gst: "19AAMCM3987F1ZV",
@@ -52,7 +53,7 @@ const ORG = {
   alternateName: ["Mrityika Realters", "Mrityika Estates"],
   url: `${SITE}/`,
   logo: `${SITE}/images/mrityika-logo.png`,
-  telephone: "+91-9150568165",
+  telephone: "+91-8974332863",
   foundingDate: "2019-01-28",
   taxID: F.gst,
   identifier: [
@@ -67,7 +68,8 @@ const PLACE = {
   "@type": ["Place", "Residence"],
   "@id": `${SITE}/#shantiban-city`,
   name: "Shantiban City",
-  address: { "@type": "PostalAddress", streetAddress: "Tapna, Baruipur", addressLocality: "Baruipur", addressRegion: "West Bengal", postalCode: "700145", addressCountry: "IN" },
+  address: { "@type": "PostalAddress", streetAddress: "Tapna, Baruipur–Amtala Road", addressLocality: "Baruipur", addressRegion: "West Bengal", postalCode: "743503", addressCountry: "IN" },
+  geo: GEO,
   hasMap: MAP,
 };
 const LISTING = (url, lang) => ({
@@ -92,7 +94,7 @@ const PAGES = [
     title: "Plots for Sale in Baruipur from ₹20 Lakh | Shantiban City, Tapna",
     description: "Buy a residential plot in Baruipur, 20 km from Kolkata. Shantiban City in Tapna offers 2.5 katha plots from ₹20 lakh in a gated community with wide roads, drainage, electricity and a park. Ready to register now.",
     h1: "Plots for sale in Baruipur",
-    lead: `Shantiban City is a gated residential plot community in Tapna, Baruipur, about 20 km from Kolkata. Plots of around ${F.plotSize} start from ${F.price}, and you can register and take possession of your plot now while the community's shared facilities are developed in phases.`,
+    lead: `Shantiban City is a gated residential plot community in Tapna, Baruipur, about 20 km from Kolkata. Plots of ${F.plotSize} start from ${F.price}, and you can register and take possession of your plot now while the community's shared facilities are developed in phases.`,
     crumb: "Plots in Baruipur",
     body: [
       ["facts"],
@@ -128,7 +130,7 @@ const PAGES = [
     ],
     faq: [
       ["What is the price of a plot in Shantiban City, Baruipur?", `Plots start from ${F.price}. The final price depends on the plot's size and position. Ask our team for the exact total, including registration and stamp duty, for the plot you like.`],
-      ["What size are the plots?", `Residential plots are around ${F.plotSize} each, which is roomy enough for a family home with open space. There are ${F.plots} plots in the community, plus commercial space.`],
+      ["What size are the plots?", `Residential plots are ${F.plotSize} each, which is roomy enough for a family home with open space. There are ${F.plots} plots in the community, plus commercial space.`],
       ["Is Shantiban City ready to move?", "Yes. Plots can be registered and handed over now, and buyers can start boundary work. The shared facilities such as roads, drainage, the park and community hall are being developed in phases."],
       ["How far is Shantiban City from Kolkata?", "About 20 km from Kolkata city. Garia Metro is about 14 km and Joka Metro about 15 km away, and the Baruipur Bypass is about 7 km away."],
       ["Where exactly is Shantiban City?", `In Tapna, Baruipur, South 24 Parganas, West Bengal (${F.address}).`],
@@ -140,9 +142,9 @@ const PAGES = [
     lang: "bn",
     alt: "plots-in-baruipur",
     title: "বারুইপুরে জমি / প্লট বিক্রি – ₹২০ লাখ থেকে | শান্তিবন সিটি, টাপনা",
-    description: "কলকাতা থেকে মাত্র ২০ কিমি দূরে বারুইপুরের টাপনায় শান্তিবন সিটি। গেটেড কমিউনিটিতে প্রায় ২.৫ কাঠার প্লট, দাম শুরু ₹২০ লাখ থেকে। এখনই রেজিস্ট্রি করা যায়।",
+    description: "কলকাতা থেকে মাত্র ২০ কিমি দূরে বারুইপুরের টাপনায় শান্তিবন সিটি। গেটেড কমিউনিটিতে ২.৫ কাঠার প্লট, দাম শুরু ₹২০ লাখ থেকে। এখনই রেজিস্ট্রি করা যায়।",
     h1: "বারুইপুরে প্লট বিক্রি",
-    lead: "শান্তিবন সিটি বারুইপুরের টাপনায় একটি গেটেড আবাসিক প্লট কমিউনিটি, কলকাতা থেকে প্রায় ২০ কিমি দূরে। প্রায় ২.৫ কাঠার প্লটের দাম শুরু ₹২০ লাখ থেকে। প্লট এখনই রেজিস্ট্রি করে বুঝে নেওয়া যায়, আর কমিউনিটির সুবিধাগুলি ধাপে ধাপে তৈরি হচ্ছে।",
+    lead: "শান্তিবন সিটি বারুইপুরের টাপনায় একটি গেটেড আবাসিক প্লট কমিউনিটি, কলকাতা থেকে প্রায় ২০ কিমি দূরে। ২.৫ কাঠার প্লটের দাম শুরু ₹২০ লাখ থেকে। প্লট এখনই রেজিস্ট্রি করে বুঝে নেওয়া যায়, আর কমিউনিটির সুবিধাগুলি ধাপে ধাপে তৈরি হচ্ছে।",
     crumb: "বারুইপুরে প্লট",
     body: [
       ["facts"],
@@ -169,7 +171,7 @@ const PAGES = [
     ],
     faq: [
       ["শান্তিবন সিটিতে প্লটের দাম কত?", "প্লটের দাম শুরু ₹২০ লাখ থেকে। চূড়ান্ত দাম প্লটের মাপ ও অবস্থানের উপর নির্ভর করে। রেজিস্ট্রেশন ও স্ট্যাম্প ডিউটি সহ সঠিক মোট খরচ জানতে আমাদের টিমের সঙ্গে কথা বলুন।"],
-      ["প্লটের মাপ কত?", "প্রতিটি আবাসিক প্লট প্রায় ২.৫ কাঠা। কমিউনিটিতে মোট ২২০টি প্লট আছে, সঙ্গে বাণিজ্যিক জায়গা।"],
+      ["প্লটের মাপ কত?", "প্রতিটি আবাসিক প্লট ২.৫ কাঠা। কমিউনিটিতে মোট ২২০টি প্লট আছে, সঙ্গে বাণিজ্যিক জায়গা।"],
       ["শান্তিবন সিটি কি রেডি টু মুভ?", "হ্যাঁ। প্লট এখনই রেজিস্ট্রি করে বুঝে নেওয়া যায় এবং বাউন্ডারির কাজ শুরু করা যায়। রাস্তা, ড্রেনেজ, পার্ক ও কমিউনিটি হল ধাপে ধাপে তৈরি হচ্ছে।"],
       ["কলকাতা থেকে শান্তিবন সিটি কত দূরে?", "কলকাতা শহর থেকে প্রায় ২০ কিমি। গড়িয়া মেট্রো প্রায় ১৪ কিমি, জোকা মেট্রো প্রায় ১৫ কিমি এবং বারুইপুর বাইপাস প্রায় ৭ কিমি দূরে।"],
       ["শান্তিবন সিটি ঠিক কোথায়?", "টাপনা, বারুইপুর, দক্ষিণ ২৪ পরগনা, পশ্চিমবঙ্গ – ৭০০১৪৫।"],
@@ -209,7 +211,7 @@ const PAGES = [
       ["h2", "How Shantiban City in Baruipur compares"],
       ["facts"],
       ["ul", [
-        `<strong>Price:</strong> plots from ${F.price}, for around ${F.plotSize}.`,
+        `<strong>Price:</strong> plots from ${F.price}, for ${F.plotSize}.`,
         "<strong>Status:</strong> ready to register and take possession now; shared infrastructure is being developed in phases.",
         "<strong>Inside the community:</strong> gated entry and security, wide roads, concrete drainage, electricity, a park, community hall and shop spaces.",
         "<strong>Nearby:</strong> market about 500 m, school about 1.5 km, hospital about 2 km, Garia Metro about 14 km, Kolkata about 20 km.",
@@ -224,7 +226,7 @@ const PAGES = [
     faq: [
       ["Which is the best area to buy a plot near Kolkata?", "It depends on your budget and where you work. Baruipur offers lower land prices with established amenities; Sonarpur, Garia and Joka are closer to the metro but cost more; the Rajarhat and New Town fringe is planned but among the most expensive."],
       ["What should I check before buying land in West Bengal?", "Check the title deed, record of rights (khatian/porcha), mutation and land conversion papers with your own lawyer, verify the developer's company registration, and confirm the total cost including stamp duty and registration."],
-      ["How much does a plot near Kolkata cost?", `It varies widely by area and plot. At Shantiban City in Baruipur, about 20 km from Kolkata, plots of around ${F.plotSize} start from ${F.price}.`],
+      ["How much does a plot near Kolkata cost?", `It varies widely by area and plot. At Shantiban City in Baruipur, about 20 km from Kolkata, plots of ${F.plotSize} start from ${F.price}.`],
       ["Is buying a plot better than an apartment?", "A plot gives you land you fully own and the freedom to build your own home at your own pace, while an apartment is ready to live in but you share the land and building. Many families buy a plot as a long-term asset and build when ready."],
     ],
   },
@@ -232,7 +234,7 @@ const PAGES = [
     slug: "shantiban-city-fact-sheet",
     lang: "en",
     title: "Shantiban City Fact Sheet: Price, Plot Size, Location & Developer Details",
-    description: "Key facts about Shantiban City, Tapna, Baruipur: 220 plots of about 2.5 katha from ₹20 lakh, distances, amenities, project status and developer registration details (CIN, GST, KMC enlistment).",
+    description: "Key facts about Shantiban City, Tapna, Baruipur: 220 plots of 2.5 katha from ₹20 lakh, distances, amenities, project status and developer registration details (CIN, GST, KMC enlistment).",
     h1: "Shantiban City fact sheet",
     lead: "All the key facts about Shantiban City in one place, kept up to date by the developer.",
     crumb: "Fact sheet",
@@ -244,7 +246,7 @@ const PAGES = [
         ["Location", F.address],
         ["Distance from Kolkata", "About 20 km"],
         ["Total plots", String(F.plots)],
-        ["Residential plot size", `About ${F.plotSize}`],
+        ["Residential plot size", F.plotSize],
         ["Commercial space", F.commercial],
         ["Price", `From ${F.price} per plot`],
         ["Status", "Ready to register and take possession; shared infrastructure being developed in phases"],
@@ -271,7 +273,7 @@ const PAGES = [
     ],
     faq: [
       ["What is the starting price at Shantiban City?", `Plots start from ${F.price}.`],
-      ["How many plots are there in Shantiban City?", `${F.plots} plots, with residential plots of about ${F.plotSize}, plus ${F.commercial} of commercial space.`],
+      ["How many plots are there in Shantiban City?", `${F.plots} plots, with residential plots of ${F.plotSize}, plus ${F.commercial} of commercial space.`],
       ["Who is the developer of Shantiban City?", `${F.legalName}, CIN ${F.cin}, GSTIN ${F.gst}.`],
       ["Is Shantiban City ready to move?", "Yes, plots can be registered and handed over now, while the shared infrastructure is being developed in phases."],
     ],
@@ -298,7 +300,7 @@ function block(b, t, lang) {
   if (kind === "img") return `<figure><img src="${a}" alt="${esc(b2)}" loading="lazy" decoding="async"><figcaption>${esc(c)}</figcaption></figure>`;
   if (kind === "facts") {
     const n = lang === "bn" ? BN_DIGITS : (s) => s;
-    const items = [[t.from, lang === "bn" ? "₹২০ লাখ" : F.price], [t.size, lang === "bn" ? "~২.৫ কাঠা" : `~${F.plotSize}`], [t.total, n(String(F.plots))], [t.dist, lang === "bn" ? "~২০ কিমি" : "~20 km"]];
+    const items = [[t.from, lang === "bn" ? "₹২০ লাখ" : F.price], [t.size, lang === "bn" ? "২.৫ কাঠা" : F.plotSize], [t.total, n(String(F.plots))], [t.dist, lang === "bn" ? "~২০ কিমি" : "~20 km"]];
     return `<dl class="facts">${items.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>`;
   }
   if (kind === "distances") {

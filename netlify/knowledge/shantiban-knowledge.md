@@ -456,7 +456,7 @@ The agent should NEVER manufacture an answer merely to keep the conversation flo
 
 # 18. PRICING QUESTIONS
 
-**Current starting price (provided by MRITYIKA REALTERS, November 2026):** plots at Shantiban City start from **₹20 lakh per plot**. Residential plots are about 2.5 katha.
+**Current starting price (provided by MRITYIKA REALTERS, November 2026):** plots at Shantiban City start from **₹20 lakh per plot**. Each residential plot is 2.5 katha.
 
 When asked about price, say plots start from ₹20 lakh, that the final price depends on the plot size and position, and that the team can share the exact total including registration and stamp duty. Example:
 
@@ -775,7 +775,7 @@ If a customer asks for the company GST number, provide it exactly as written abo
 * **Incorporated:** 28 January 2019, under the Companies Act, 2013
 * **Kolkata Municipal Corporation Certificate of Enlistment:** 0206 3100 6731, nature of trade "real estate developer", valid up to 31 March 2027
 * **Office address:** Unit 706, 7th Floor, Om Tower, 32 Chowringhee Road, Park Street, Kolkata 700071
-* **Phone for site visits:** +91 91505 68165
+* **Phone for site visits:** +91 89743 32863
 
 ---
 
